@@ -29,7 +29,7 @@ public class ServiceClass {
     }
 
     public boolean validateProductId(Long id){
-        Product product = productRepository.findById(id);
+        Product product = productRepository.findByProductId(id);
         if (product == null) return false;
         return true;
     }

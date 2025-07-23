@@ -67,7 +67,7 @@ public class OrderService {
 
             orderItem.setOrder(orderDetails);
 
-            orderItem.setProduct(productRepository.findById(productDTO.getId()));
+            orderItem.setProduct(productRepository.findByProductId(productDTO.getId()));
 
             orderItem.setQuantity(productDTO.getQuantity());
             orderItem.setPrice(productDTO.getPrice()*productDTO.getQuantity());
@@ -75,18 +75,5 @@ public class OrderService {
             orderItemRepository.save(orderItem);
         }
     }
-}
-// 3. **Retrieve the Store**:
-//    - Fetch the store by ID from `storeRepository`.
-//    - If the store doesn't exist, throw an exception. Use `storeRepository.findById()`.
 
-// 4. **Create OrderDetails**:
-//    - Create a new `OrderDetails` object and set customer, store, total price, and the current timestamp.
-//    - Set the order date using `java.time.LocalDateTime.now()` and save the order with `orderDetailsRepository.save()`.
-
-// 5. **Create and Save OrderItems**:
-//    - For each product purchased, find the corresponding inventory, update stock levels, and save the changes using `inventoryRepository.save()`.
-//    - Create and save `OrderItem` for each product and associate it with the `OrderDetails` using `orderItemRepository.save()`.
-
-   
 }

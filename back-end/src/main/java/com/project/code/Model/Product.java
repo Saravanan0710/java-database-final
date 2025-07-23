@@ -7,13 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.processing.Generated;
 import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = "sku"))
 public class Product {
 
     @Id
@@ -30,7 +30,6 @@ public class Product {
     private double price;
 
     @NotNull
-    @Table(name = "product", uniqueConstraints(columnNames = "sku"))
     private String sku;
 
     @OneToMany(mappedBy = "product")
